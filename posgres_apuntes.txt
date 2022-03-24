@@ -3,22 +3,28 @@ sudo apt install postgresql postgresql-contrib
 sudo -u posrgresql psql
 \l
 \q
+\d  ///busca relaciones
+\?
+\i /users/person.sql
+\x expanded display on
 
 alter user postgres with password 'gigio';
 
 sudo apt install pgadmin4
 
 COALESCE
+si coalesce(null, 1)  goto second parameter
 select email from person;
 select coalesce(email) from person;
 select coalesce(email, 'email not provided') from person;
 
 
 NULLIF
+si son iguales no elige nada es null,, si son distintos elige el primero
 select 10 / 0;
 select NULLIF(10, ); ///toma dos argumentos 
 
-select coalesce(10 / NULLIF(0,0), 0);
+select coalesce(10 / NULLIF(0,0), 0); permite retornar 0 en vez de un error y coalesce permite retornar 0 en vez de null.
 
 
 TIMESTAMPS AND DATES
@@ -57,9 +63,89 @@ ADDING PRIMARY KEY
 alter table person add primary key (id);     ///// recieves an array of values for compose multiple columns
 
 UNIQUE CONSTRAINTS
+select email, count(*) from person group by  email having count(*) > 1;
+alter table person add constraint unique_email_address UNIQUE (email);
+alter table person drop constraint unique_email_address;
+alter table person add unique (email); /// the name is given by postgress
+
+
+CHECK CONSTRAINTS
+permits add a constraint based in a boolean condition
+select UNIQUE gender from person;
+select DISTINCT gender from person;
+alter table person add constraint gender_constraint CHECK (gender = 'Female' or gender = 'Male' )
+
+
+UPDATE
+update person set email = 'oamr@htomal.com', first_name = 'smith' where id = 2011;
 
 
 
+ON CONFLICT DO NOTHING
+for duplicate errores o exceptions
+insert ... on conflict (id) do nothing;   // the column must be unique
+
+UPSERT
+
+
+
+
+
+CREATE A TABLE
+
+create table tname(
+id bigserial not null primary key,
+first_name varchar(50),
+date_of_birth date not null 
+
+INSERT
+insert into person (    date '1988-01-09'    );
+
+MOCKAROO
+
+COMPARISON OPERATORS
+select 1 = 1;
+
+LIMIT, OFFSET, FETCH
+select * from person limit 10;
+select * from person offset 10;
+select * from person offset 5 fetch first 5 row only;
+select * from person offset 10 limit 10 ;
+
+
+IN
+select * from person where country in ('China', 'Brazil');
+
+BETWEEN
+select * from person where date_of_birth between '2000-01-01' and '1990-01-10';
+
+LIKE / ILIKE
+like '%'
+like '____hola'
+
+ILIKE   ///ignore case
+
+GROUP BY HAVING
+having count(*) > 5 
+
+
+MAX
+select max(price) from car;   //min avg
+select round(avg(price));
+
+select make, model, min(price) from car group by make, model;
+
+SUM
+select sum(price) from car;
+select make, sum(price) from car group by make;
+
+MATH
+select 10 / 2;
+select 12!;
+select 10%3;  // es el modulo
+
+ROUND
+select price, price * .10 from car;  round(price * .10, 2)
 
 
 

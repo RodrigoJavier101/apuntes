@@ -1,0 +1,29 @@
+solo para sist unix, el export es SET
+
+consola ::: export PORT=4000   //// crea una variable de entorno 
+consola ::: export DB_PASSWORD=123123
+console.log(process.env.PORT);
+
+el modulo crossenv permite reconocer el SO 
+npm init --yes
+npm i cross-env
+
+npx cross-env PORT 4000 node index.js
+
+tambien se puede ejecutar en el script
+"start":"cross-env PORT=4000 DB_PASSWORD=123123 node index.js"
+
+es solo para la sesion de terminal
+>help export
+_____________________________________
+DOT ENV
+npm i dotenv
+require('dotenv').config() ///// hace disponibles las variables en todo el proyecto 
+PORT=5000
+PASSWORD=123123
+
+.gitignore
+node_modules
+.env
+
+console.log(process.env.PORT);
