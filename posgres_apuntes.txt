@@ -1,4 +1,33 @@
+WSX2022z.
+
+
 sudo apt install postgresql postgresql-contrib
+sudo apt install postgresql postgresql-contrib
+ 
+sudo -i -u postgres  		// entra en la cuenta de postgres
+
+>>>  psql					// en tra en el postgres prompt
+
+sudo -u postgres psql		// entra directo al prompt
+
+\q					///salir
+
+
+sudo -u postgres createuser --interactive		/////create una new user
+crear name:::::
+??superuser????
+
+sudo -u postgres createdb <nombre de la ddbbb>
+sudo -u postgres psql     //// al prompt
+>>> \conninfo   //// salir
+
+sudo -u <user> psql ///// entra en el prompt del user
+/l					// lista las ddbb
+
+create database <nombre de la ddbb>;
+
+
+
 
 sudo -u posrgresql psql
 \l
@@ -146,6 +175,48 @@ select 10%3;  // es el modulo
 
 ROUND
 select price, price * .10 from car;  round(price * .10, 2)
+
+DELETING RECORDS WITH FOREIGN KEYS
+
+
+
+EXPORTING QUERY RESULTS TO CSV
+\copy (select * from person) to '/users/amigoscode/Desktop/results.csv' delimiter ',' CSV HEADER;
+
+SERIAL & SEQUENCES
+select * from person_id_seq;
+alter sequence person_id_seq restart with 10:
+
+EXTENSOIONS
+select * from pg.available_extensions;
+
+UUID
+para instalar:
+create extension if not exists "uudi-ossp";
+select * from pg.available_extensions;
+\df
+select uuid_generate_v4();
+
+person_uid UUID primary key nto null;
+car_uid UUID references car(car_id);
+UNIQUE(car_uid)
+UNIQUE(email)
+
+insert INTO person (person_uid) values (uuid_generate_v4());
+
+select * from person left join car USING (car_uid); /// when columns are equals.  ?foreing and primary key?
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

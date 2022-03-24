@@ -1,0 +1,89 @@
+items:cualquier cambio en un artículo que publicaste.
+
+payments: se crea un pago en una orden o el estado del mismo cambia.
+
+orders_v2: desde la creación y cambios realizados en alguna de tus ventas confirmadas (recomendable).
+
+shipments: de la creación y cambios realizados en los envíos (shippings) de tus ventas confirmadas.
+
+stock fulfillment: notificaciones con el detalle de una operación en particular ejecutada sobre el stock 
+         que el seller tiene almacenado en los depósitos de FBM.
+
+best price eligible: notificaciones cuando se crea una nueva promoción, 
+         se modifica el monto del target price y 
+         cuando un ítem que está compitiendo deja de ser el ganador del destaque especial en catálogo.
+
+items prices: del item_id cada vez que el precio se crea, 
+         se actualiza o 
+         se borra.
+
+public offers: cuando se crea o cambia de estado una oferta en un ítem.
+
+=============================================================================================================
+curl -X GET -H 'Authorization: Bearer $ACCESS_TOKEN' https://api.mercadolibre.com
+https://developers.mercadolibre.cl/es_ar/productos-recibe-notificaciones
+
+ITEMS
+ /items/$ITEM_ID
+
+
+questions
+/questions/$QUESTION_ID
+
+
+messages
+/messages/$RESOURCE
+
+quotations
+/$RESOURCE?caller.type=seller
+
+
+item competition
+/items/$ITEM_ID/price_to_win
+
+catalog suggestions
+/catalog_suggestions/$SUGGESTION_ID
+
+items prices
+/items/$ITEM_ID/prices
+
+public offers
+/seller-promotions/offers/$OFFERS_ID
+
+Histórico de notificaciones
+/missed_feeds?app_id=$APP_ID
+
+IP de las que se notifica.
+- 54.88.218.97
+- 18.215.140.160
+- 18.213.114.129
+- 18.206.34.84
+/missed_feeds?app_id=3486171129139063
+
+Campos del recurso
+resource: recurso completo, con tópico por el cual se generó la notificación.
+
+user_id: usuario que la generó.
+
+topic: tema referente de la notificación.
+
+request: consulta realizada a la URL de notificaciones, junto con su respectivo url, header y data.
+
+response: respuesta de parte del servidor que recibe la notificación.
+
+http_code: código HTTP que devuelve dicho servidor, para que no se reintente tiene que enviar un 200.
+
+
+Filtro por tópico
+Existe la posibilidad de filtrar por tópico, es muy útil para 
+cuando se tienen una gran cantidad de notificaciones.
+
+/missed_feeds?app_id=$APP_ID&topic=$TOPIC
+/missed_feeds?app_id=3486171129139063&topic=payments
+
+Nota:
+Por defecto sólo se mostrarán 10 notificaciones pero, 
+puedes utilizar LIMIT y OFFSET para modificar la cantidad que quieres recibir
+
+/missed_feeds?app_id=$APP_ID&offset=1&limit=5
+
