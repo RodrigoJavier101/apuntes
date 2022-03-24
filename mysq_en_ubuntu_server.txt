@@ -1,0 +1,32 @@
+WSX2022*
+QWEqwe2022*
+
+sudo apt update
+sudo apt install mysql-server
+sudo mysql_secure_installation
+
+
+sudo mysql
+sudo mysql -u root -p
+
+> SELECT user,authentication_string,plugin,host FROM mysql.user;
+> ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password';
+
+
+FLUSH PRIVILEGES para indicar al servidor que vuelva a cargar la tabla de permisos y aplique sus nuevos cambios:
+> FLUSH PRIVILEGES;
+
+Compruebe de nuevo los métodos de autenticación empleados
+>SELECT user,authentication_string,plugin,host FROM mysql.user;
+
+
+exit
+
+mysql -u root -p
+
+
+CREATE USER 'sammy'@'localhost' IDENTIFIED BY 'password';
+
+
+GRANT ALL PRIVILEGES ON *.* TO 'sammy'@'localhost' WITH GRANT OPTION;
+

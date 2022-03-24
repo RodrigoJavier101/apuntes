@@ -1,0 +1,69 @@
+sudo apt install postgresql postgresql-contrib
+
+sudo -u posrgresql psql
+\l
+\q
+
+alter user postgres with password 'gigio';
+
+sudo apt install pgadmin4
+
+COALESCE
+select email from person;
+select coalesce(email) from person;
+select coalesce(email, 'email not provided') from person;
+
+
+NULLIF
+select 10 / 0;
+select NULLIF(10, ); ///toma dos argumentos 
+
+select coalesce(10 / NULLIF(0,0), 0);
+
+
+TIMESTAMPS AND DATES
+select now();
+select now()::DATE;
+select now()::TIME;
+
+\d person   //describe table person
+
+ADDING AND SUBSTRACTIN DATES
+select now() -/+ interval '1 year';
+select now() -/+ interval '1 month';
+select now() -/+ interval '1 day';
+
+select now()::date  + interval '10 month';
+select ( now() + interval '10 month' )::date;
+
+
+EXTRACTING FIELD
+extract specific values from a date
+select now()
+select extract(year from now());
+select extract(month from now());
+select extract(day from now());
+select extract(dow from now());  /day of the week  sunday is 0 so for....
+select extract(century from now());
+
+AGE FUNCTION
+select age(now(), date_of_birth);   ///toma 2 argumentos
+
+PRIMARY KEYS
+ID BIGSERIAL NOY NULL PRIMARY KEY 
+alter table person drop constraint person_pkey
+
+ADDING PRIMARY KEY 
+alter table person add primary key (id);     ///// recieves an array of values for compose multiple columns
+
+UNIQUE CONSTRAINTS
+
+
+
+
+
+
+
+
+
+

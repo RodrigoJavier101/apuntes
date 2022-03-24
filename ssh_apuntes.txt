@@ -1,0 +1,197 @@
+
+Preparing your server
+To add an SSH key pair, first, create a hidden folder to your user account home directory on your cloud server with the following command.
+
+mkdir -p ~/.ssh
+Then restrict the permissions to that directory to just yourself with the command below.
+
+chmod 700 ~/.ssh
+This creates a secure location for you to save your SSH keys for authentication. However, note that since the keys are stored in your user home directory, every user that wishes to connect using SSH keys for authentication has to repeat these steps on their own profile.
+
+1. Generate a new key pair in a terminal with the next command
+ssh-keygen -t rsa
+
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@server
+
+
+
+_____________++++++++++++++++++++++++++++
+
+sudo apt install ssh 
+sudo apt install nmap
+
+ifconfig 
+
+check el puerto abierto con ssh
+nmap <ip>   ///// muestra el servicio abieto con ssh
+
+
+para check la otras computadora
+conocer el nombre de la maquina
+ifconfig
+
+ssh <nombre user de la maquina>@<IP>
+ls primera veza la conexion pregunta si es que se quiere agregar un 
+fingerprint a la lista de servers confiables, si cambia da un aviso 
+
+
+wget   /// permite descargar archivos de internet 
+
+para pasarle un certificado publico a la otra maquina para no tener que 
+darle el password a cada rato.
+
+ssh-keygen ////// genera un cert en mi maquina
+
+se copia la key publica
+cat .ssh/id_rsa.pub
+
+dentro del seridor se debe modificar le file 
+.ssh/authorized_keys 
+y pegar
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+upcloud 
+Deploy server
+region, puede ser cualquiera
+Sistema Operativo
+Seleccionar la key de ssh
+
+Copiar una key en el servidor 
+
+Entrar en el server
+user@IP
+antes de entrar con la pass
+ssh-copy-id  user@ip:
+
+pide la pas
+se guarda...
+si se hace un cat al .ssh/authorized_keys  se ve copiada
+_____
+Caso del cliente de chat donde se bloquean algunos puertos, por eje
+irc no va por el puerto 80 o por el 22
+entonces se puede usar como un cliente  
+
+ssh -t user@IP irssi     ///irssi corre en el server   /quit para salir 
+____
+En el caso de que se bloqueen algunas paginas
+se puede usar ssh como un proxy  para el navegador
+ssh -D <puerto> user@IP
+Crea un proxy sock en el server
+en la configuracion de wifi opcion PROXIES click en PROXY DE SOCKS
+y en el server proxy agregar localhost:puerto 
+
+
+____
+Ejecutar apps con interfaz grafica que estan en el server en mi maquina
+ssh -X user@IP
+**** en linux esta instalado todo, pero en mac o windows se debe instalar un server  X
+en mac se llama XQUARTZ.app
+
+ejecutado por eje se llama
+firefox  , lo ejecuta en el server pero se ve en mi maquina
+
+
+____
+Si un server esta detras de un fireWALL  LOCALFORWARD 
+de dos server donde en uno si se puee entrar
+ssh -L 2020:<ip>:22 user@ip
+Crea el puerto 2020 en mi maquina que apunta al puerto 22 del servidor 2 (bloqueado)
+a atraves del servidor 1
+se usa con
+ssh -p 2020 user@localhost   mi maquina se redirecciona al server 2
+
+___
+Si no hay otro server al que se le pueda hacer ssh indirecto, pero si hay una persona 
+que tiene acceso fisico al server que puede hacer ssh para afuera y me habilite.
+Se puede hacer un tunel de ssh reverso
+ssh -R 2020:localhost:22 user@externoMIO
+Crea un puerto en el server externoMIO que apunte al localhost:22 del server 2
+Es decir,me meto al server bloqueado desde mi server que controlo 
+finalmente:
+ssh root@localhost -p2020
+accedo a mi server2MIO y por medio de el accedo a server bloqueado
+
+
+
++++++++++++++++++++++++++++++++++++++
+Comandos mas avanzados
+file de config, por eje 
+
+.ssh/config
+se pueden declarar nombres de servidores
+
+Host rpi
+Hostname 192.168.0.9
+        User kbs
+        LocalForward 1631 127.0.0.1:631
+
+Entrar seria
+ssh rpi 
+y no 
+ssh -L 8080:localhost:80 root@192.168.0.1
+
+_____
+se puede ejecutar un comando y salir
+ssh rpi ls
+
+
+_____
+scp  Desktop/1.mov rpi:/root/      /// por detras usa el clnete sh 
+su problema es que si se cae la conexion se debe empezar de nuevo.
+
+por eso usar 
+rsync --partial --progress --rsh-ssh Desktop/1.mov rpi:1.mov
+usa rsync para copiar el archivo
+No es necesari tener el servidor de rsync configurado, solamente instlado el cliente de rsync   
+
+____
+Agente de ssh, permite cargar las keys para autenticarse, permite hacer un 
+forward de la key 
+por ejem si se quiere conectar al server2 desde el server1 
+se puede tener la key en mi maquina y usarla para conectarse desde el server1 al server2
+no hace falta que este hosteada en el server1
+
+Si ejecuto el agente con
+eval `ssh-agent`   //luego agrega la key 
+ssh-add .ssh/id_rsa
+ssh-add -l     /// me muestras las keys cargadas
+nvim  .ssh/config
+se debe tener activada la opcion
+ForwaardAgente yes
+
+se peude entrar
+ssh server1
+luego
+ssh server2    /// el agent para la private key hasta el server2 y me puedo conectar
+
+ssh -t server1  ssh root@ipserver2    /// -t es terminal
+De un solo comando me puedo conectar 
+Si no tengo guardada la ip del server dos se puede hacer un jump
+ssh -J server1 server2
+se puede hacer de varios
+ssh -J server1, server2, server3 ///puedo llegar al server3
+
+con w puedo ver las conexiones
+estando en server3
+~C
+levantga un interprete de cliente ssh y se le pueden pasar la opciones adicionales
+por eje
+-L 8080:localhost:80
+y ahora se puede hacer localhost:8080 y mellava al server2 en su puerto 8080
+
+_______
+Montar directorios enteros de un server
+sshfs  user@ipserver:/home/rpi/ /mnt/rpi2  /////// ruta y el punto de montaje
+luego
+ls /mtn/rpi2 
+muestra los files del directorio del punto de montaje
+
+
+________________
+vim puede ejecutar directamente files a traves de scp
+vim scp://rpideconfig/rutadocker-compose.yaml   ///en el home
+
+
+

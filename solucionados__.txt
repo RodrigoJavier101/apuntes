@@ -1,0 +1,104 @@
+
+---------------------------------------------------
+'Retry As Sudo' doesn't work to save a file
+sudo chown -c -R $USER:$USER $HOME
+
+---------------------------------------------------
+dpkg -i code ...
+
+---------------------------------------------------
+lsusb    // lista de sbi
+//con una ID de bus
+//Si no puede averiguar cuál es el dispositivo adicional (es posible que tenga un dispositivo USB interno, tal vez Ethernet),
+
+ dmesg | grep -i USB
+ //Para contrarrestar esto, puedes intentar
+ dmesg | less
+ //los más fáciles de usar.
+
+usb-devices
+
+
+_____________
+ssh-keygen
+
+cat ~/.ssh/id_rsa.pub
+
+___---==-=-=-=-=-=
+
+//cerrar un puerto
+sudo ufw allow 5500
+
+*sudo ufw deny 22
+
+*para cerrar el puerto abierto en ubuntu puedes usar el siguiente comando
+
+sudo kill $(sudo lsof -t -i:5500)
+*lsof el comando dará información sobre el archivo abierto por proceso 
+-t : Este indicador especifica que lsof debería producir una salida concisa solo con identificadores de proceso y sin encabezado, por ejemplo, para que la salida se pueda canalizar a kill (1). Esta opción selecciona la opción -w.
+
+-i : este indicador selecciona la lista de archivos cuya dirección de Internet coincide con la dirección especificada en i. Si no se especifica una dirección, esta opción selecciona la lista de todos los archivos de Internet y de red x.25 (HP-UX).
+
+*********************************************************
+****reconocer dispositivos
+sudo lshw
+*********************************************************************
+netstat -putona | grep numero-de-puerto
+
+//
+$ sudo lsof -i -P -n
+$ sudo lsof -i -P -n | grep LISTEN
+
+
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/eon}"/nvim/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+
+
+______
+mongo install 
+
+curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+
+cURL es una herramienta utilizada para transferir datos
+
+imprime el contenido del archivo de claves GPG y, luego, lo canaliza al siguiente comando sudo apt-key add -
+
+apt-key list   ///// lista de llaves
+
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+sudo apt update
+
+sudo apt install mongodb-org
+
+Iniciar el servicio MongoDB y probar la base de datos
+
+sudo systemctl start mongod.service    ///para iniciar el servicio
+
+sudo systemctl status mongod   /////compruebe el estado del servicio.
+
+sudo systemctl enable mongod     ////habilite el servicio MongoDB para que se inicie en el arranque
+
+mongo --eval 'db.runCommand({ connectionStatus: 1 })'     ////erificar que la base de datos está operativa 
+
+
+Gestionar el servicio de MongoDB
+
+sudo systemctl disable mongod
+
+sudo systemctl enable mongod				/////habilitarlo en el inicio,
+
+
+sudo systemctl status mongod			//////comprueba el estado del servicio
+
+sudo systemctl stop mongod				//////detener el servicio 
+
+sudo systemctl start mongod				///////iniciar el servicio cuando esté detenido
+
+sudo systemctl restart mongod			/////////reiniciar el servidor cuando esté ejecutándose
+
+
+--------------------------------------
+

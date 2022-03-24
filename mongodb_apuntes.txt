@@ -1,0 +1,340 @@
+MONGO en el server
+
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu
+wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+
+sudo apt-get install gnupg
+
+wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+
+crear
+sudo touch /etc/apt/sources.list.d/mongodb-org-5.0.list
+
+verificar version de ubuntu
+lsb_release -dc
+
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+
+reload
+sudo apt-get update
+
+
+Install the MongoDB packages.
+sudo apt-get install -y mongodb-org
+
+
+
+
+
+
+
+
+
+1. Create Database
+
+use mydb
+
+db
+
+2. Drop Database
+
+mydb.dropDatabase()
+
+3. Create Collection
+
+db.createCollection(name, options)
+
+4. Drop Collection
+
+use mydb
+
+show collections
+
+db.mycollection.drop()
+
+5. Insert Document
+
+Insert() or save()
+
+db.mycollection.insert(
+ {
+ 	_id: ObjectId(92137492384629),
+ 	title: 'Mondog  data',
+ 	description: 'Mongo description'
+ }
+)
+
+
+Filtering 
+db.collection_name.find({field:value})
+
+
+OR condition
+db.patient.find({ $or:[{reason:"cuff"},{age:{$lt:23}}]})
+
+AND condition
+db.patient.find({reason:"cuff",age:{$lt:23}})
+
+findOne()
+db.patient.findOne()
+
+_id
+db.patient.insert({_id:1,name:"dhruvi",age:26,reason:"cough"})
+
+
+
+1. Create a function to generate auto-increment sequence:
+function getValueForNextSequence(auto_increment_sequence_name){
+		var sequenceDoc = db.collection_name. FindAndModify ({
+		query:{_id: auto_increment_sequence_name },
+		update: {$inc:{sequence_value:1}},
+		new: true });
+        return sequenceDoc.sequence_value; 
+}
+2. Use the auto-increment sequence:
+db.collection_name.insert (“field_name”: getValueForNextSequence (“field_name”), “field_name”: value_of_field)
+
+
+Parameters
+Below is the parameter description syntax of auto-increment:
+
+Collection name: Collection name is defined as the collection name which we have used to insert data using the auto-increment sequence in MongoDB. We need to define the collection name while using the auto-increment sequence.
+Function name: Function name define as for using auto-increment sequence we need to define it first. The function name is significant while inserting documents into the collection while using the sequence.
+Find and modify: Find and modify is a method that we have used while inserting a document into the collection by using the find and modify method.
+Field name: We have to define field names while inserting a document into the field. The field name is an important parameter while using the auto-increment sequence.
+Query: Query is defined as which we have used in the auto-increment sequence.
+Update: It is defined as an updated document from the collection by using the auto-increment sequence.
+
+
+
+
+
+
+
+
+
+
+6. Query Document
+
+db.mycollection.find().pretty()
+
+INTERMEDIATE MONGODB COMMANDS.
+
+1.Limit()
+
+db.collection.find().limt(NUMBER)
+
+2.Sort()
+
+db.mycollection.find().sort(
+	{
+		KEY:1
+	})
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+3.Indexing is the concept that helps mongodb to scan documents in efficient way.
+
+db.collection.ensureIndex(
+{
+Key:1
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ADVANCED COMMMANDS OF MONGODB.
+
+1.Aggregate().
+
+agrupa en multiples values en multiples docs juntos.
+
+db.collection.aggregate(AGGREGATE OPERATION)
+
+2.Replication
+
+se usa un set de replication.
+Es un grupo de mongo procesos que tienen el mismo data set
+
+Se debe detener el servidor de mongo y reiniciarlo con:
+
+mongod --port "PORT" --dbpath "my path ddbb" --replSet "REPLICA_SET_INSTANCE_NAME"
+
+3.Create & restore / backup.
+
+el directorio d dump es /bin/dump/
+
+mongodump --host HOST_NAME --port PORT_NUMBER
+
+y luego 
+
+mongorestore
+
+4.Monitor deployment.
+
+..... LEER
+
+
+__________________________________________________________________
+
+Syntax to create Index.
+
+db.collection.createIndex(<key and index type specifications>, <options>)
+
+single field
+db.collection.createIndex({"age":1})
+
+compound index
+db.collection.createIndex({“age”:1,”dim.h”:-1})
+
+multiple key index
+is in an array format.
+
+geospatial index.
+se usan para tener results con un rango.
+se pueden limtar la busqueda.
+db.players.find({ loc:{ $near: { $geometry: { type: "high_school",sport:"basketball " age: [14, 17]} } } })
+
+text index
+puede ser un string o un array de strings
+db.movies.find( { $text : { $search : "tom hardy" } } )
+
+hashed index
+es para soportar el 'sharding'.
+calculan el valor del hash dle index usando una funcion hash.
+no soporta multikey indexing.
+su valor debe ser 'hashed'
+db.collection.createIndex( {<fieldname>: "hashed" } )
+
+crear un unico index
+db.collection.createIndex( <key and index>, { unique: true } )
+
+crear un index parcial.
+db.pupils.createIndex( { name: 1},{ partialFilterExpression: {age: { $gt: 5 } } })
+
+gt : greater than
+gte : greater than or equal
+lt : less than
+lte : less than or equal
+eq : equal
+exits : true operation
+
+TTL index
+TTL indexa un tipo especial de single keys, los que pueden ser eliminados
+db.log.createIndex( { "lastModifiedDate": 1 }, { expireAfterSeconds: 10000 } )
+
+Sparse index.
+indexa solo los dctos que contienen el campo del valor del index. Ignora todos 
+dctos que no contienen el campo. 
+By default, non-sparse indexes contain all the documents in the collections, with null as the value for those fields which are not present.
+db.pupil.createIndex( { "age": 1 }, { sparse: true } )
+no se van a indexar dctos que no contienen el campo edad.
+
+Case insensitive index
+Case insensitive indexes are used to support queries that execute string comparisons without any respect to Case sensitivity
+db.collection.createIndex( { "key" : 1 },{ collation: <collation options>} )
+
+
+Collation:
+Collation document is used to specify language rules, letter case, etc., for string comparison.
+Collation documents consist of the following :
+{
+locale:<string>,
+caseLevel:<boolean>,
+caseFirst:<string>,
+strength:<int>,
+numericOrdering:<boolean>,
+alternate:<string>,
+maxVariable:<string>,
+backwards:<boolean>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

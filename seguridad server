@@ -1,0 +1,128 @@
+Aseguramiento del server:
+/crear droplet
+-usar clave ssh, clave privada esta en mi localhost|
+~/.ssh
+ssh-keygen -t rsa
+se le da nombre, passw
+
+se copia la publica
+
+cat <nombre de la llave publica.pub> | pdcopy .  
+
+en digital pcean add public ssh key
+
+se copia la ip y se puede acceder al server
+
+ssh-add <nombre clave privada>
+ssh root@18181.28323. ip  (password)
+
+el prompt debe cambiar senala el nombre de la maquina 
+
+sudo apt-gedt update y upgrade
+
+--Deshabilitar la auth por contrasena
+
+cd /etc/ssh/
+sudo vim sshd_config 
+la variable passwordAuth debe estar en NO.
+challengeRespAuth en NO.
+usePAM en NO, luego
+systemctl restart sshd
+
+--deshabilitar el root log y crear una nueva clave/user
+addusercon permisos de sudo 
+>adduser eon
+>password, QWE2022*
+>fullname (se pueden saltar)
+anadir el user al grupo de sudo 
+usermod -aG sudo <nombre>
+
+entrar con ese user
+su - eon
+antes de salir de la session se debe copiar la clave ssh en el user nuevo para poder acceder con el al server
+>crear una carpeta
+mkdir .ssh
+cd .ssh
+vim authorized_keys
+copia la clave publica
+cat <npmbre de la clave pub> | pbcopy .
+exit en root
+se cambia ahora una config de sshd__config
+cd /etc/ssh/
+sudo vim sshd_config 
+la variable PermitRootLogin NO
+para que el user rootr no pueda acceder al server
+
+reiniciar el ssh 
+systemctl restart sshd
+
+se sale del server	 
+
+---usar un firewall UFW
+sudo ufw allow OpenSSH
+es import porque cuando se entra en el server se usa ssh y el firewall lo debe permitir.
+sudo ufw allow 80/tcp   >es hhtp
+sudo ufw allow 443/tcp  >es https
+
+luego habilitar el 
+sudo ufw enable
+yes
+sudo ufw status  >permite ver las reglas activas.
+
+se deben tener una reglas por defecto 
+sudo ufw default deny incoming
+cualquiera que se quiera conn
+
+sudo ufw default allow outgoing
+
+cualquier app en el server pueda conectarse con el exterior
+sudo ufw reload 
+
+salir de la session e intentar entrar para chek
+ssh user@ip
+
+
+--Cambiar el sysctl.conf (dentro del server)
+es un file del sistema de ubuntu para anadir carac de segu 
+
+sudo vim /etc/sysctl.conf 
+descomment:
+net.ipv4.conf.default.rp_filter=1
+net.ipv4.conf.all.rp_filter=1
+
+net.ipv4.conf.all.accespt_redirect=0
+net.ipv6.conf.all.accespt_redirect=0
+
+net.ipv4.conf.all.send_redirect=0
+
+net.ipv4.conf.all.accept_source_route=0
+net.ipv6.conf.all.accept_source_route=0
+
+net.ipv4.conf.all.log_martians=1
+
+sudo sysctl -p
+verifica cambios
+
+
+--Configruar fail2ban
+es una tool que detecta atack dos
+block user que atack
+sudo apt install fail2ban
+
+habilitarlo
+sudo systemctl enable fail2ban
+
+iniciarlo
+sudo systemctl start fail2ban
+
+ver su work
+sudo systemctl status fail2ban
+
+reiniciar el server
+sudo reboot
+
+ver el status del ufw
+sudo ufw status
+
+
+

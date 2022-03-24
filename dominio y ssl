@@ -1,0 +1,76 @@
+QWEqwe2022* /// NIC
+antoinette.cl
+
+servidor dns es donde se apunta el dominio
+NOmbres de dominio:
+ns1.digitalocean.com.
+ns2.digitalocean.com.
+ns3.digitalocean.com.
+
+
+o BIEN se puede redireccionar
+
+propagacion  
+
+ssh root@ip
+ir al archivo conf de nginx
+cd /etc/nginx/sites-available/misitio
+
+server{
+  listen 80;
+  root /var/www/html;
+  index index.php index.html index.htm index.nginx-devian.html;
+  server_name php.aprendegil.com;
+
+  location / {
+    try_files $uri $uri/ =404;
+  }
+
+  location ~ \.php${
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+  }
+
+  location ~ /\.ht{
+    deny all;
+  } 
+}
+
+Editado se hace un reload de nginx
+sudo service nginx reload
+
+En el proveedor de dominio se cambia el dns
+
+En cloudfare 
+se anade un read code de type A
+En el name si es subdominio se pone solo, pero si es un dominio se empieza @ ,
+se pega la ip del server. Se guarda, se espera la propagacion del dns.
+
+++++++++++++++++++++++++++++++++++
+
+SSL
+compra de un certificado lessencrypt
+primero anadir el repositorio donde se va a instalar
+sudo add-apt-repository ppa:certbot/certbot 
+sudo apt update 
+
+antes de generar los certificados hay que cambiar las reglas de hardeware
+pk en ppio no permiten el trafico https 
+sudo ufw allow "Nginx Full"
+
+eliminar un un Rule anterior
+sudo ufw status  >apafece nginx http, se elimina para que no haya redundancia
+sudo ufw delete allow "Nginx HTTP"
+
+en el terminal del server se instala un package
+sudo certbot --nginx -d antoinette.cl  -d www.antoinette.cl    > -d es para poner el dominio --- para generar los certificados
+opcion 2 es para redicirgir a la version https.
+
+sudo certbot renew --dru-run  >verifica el proceso
+
+
+hay que esperar un poquito para renovar la cache
+
+
+el certifcado es valido por 90 dias en lets encrypt
+
