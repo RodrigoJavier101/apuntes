@@ -3,6 +3,143 @@ MONGO en el server
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu
 wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
 
+
+
+
+
+
+mongo install 
+
+curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+
+cURL es una herramienta utilizada para transferir datos
+
+imprime el contenido del archivo de claves GPG y, luego, lo canaliza al siguiente comando sudo apt-key add -
+
+apt-key list   ///// lista de llaves
+
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+sudo apt update
+
+sudo apt install mongodb-org
+
+Iniciar el servicio MongoDB y probar la base de datos
+
+sudo systemctl start mongod.service    ///para iniciar el servicio
+
+sudo systemctl status mongod   /////compruebe el estado del servicio.
+
+sudo systemctl enable mongod     ////habilite el servicio MongoDB para que se inicie en el arranque
+
+mongo --eval 'db.runCommand({ connectionStatus: 1 })'     ////erificar que la base de datos está operativa 
+
+
+Gestionar el servicio de MongoDB
+
+sudo systemctl disable mongod
+
+sudo systemctl enable mongod				/////habilitarlo en el inicio,
+
+
+sudo systemctl status mongod			//////comprueba el estado del servicio
+
+sudo systemctl stop mongod				//////detener el servicio 
+
+sudo systemctl start mongod				///////iniciar el servicio cuando esté detenido
+
+sudo systemctl restart mongod			/////////reiniciar el servidor cuando esté ejecutándose
+
+
+--------------------------------------
+
+
+mongo install 
+
+curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+
+cURL es una herramienta utilizada para transferir datos
+
+imprime el contenido del archivo de claves GPG y, luego, lo canaliza al siguiente comando sudo apt-key add -
+
+apt-key list   ///// lista de llaves
+
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+sudo apt update
+
+sudo apt install mongodb-org
+
+Iniciar el servicio MongoDB y probar la base de datos
+
+sudo systemctl start mongod.service    ///para iniciar el servicio
+
+sudo systemctl status mongod   /////compruebe el estado del servicio.
+
+sudo systemctl enable mongod     ////habilite el servicio MongoDB para que se inicie en el arranque
+
+mongo --eval 'db.runCommand({ connectionStatus: 1 })'     ////erificar que la base de datos está operativa 
+
+
+Gestionar el servicio de MongoDB
+
+sudo systemctl disable mongod
+
+sudo systemctl enable mongod				/////habilitarlo en el inicio,
+
+
+sudo systemctl status mongod			//////comprueba el estado del servicio
+
+sudo systemctl stop mongod				//////detener el servicio 
+
+sudo systemctl start mongod				///////iniciar el servicio cuando esté detenido
+
+sudo systemctl restart mongod			/////////reiniciar el servidor cuando esté ejecutándose
+
+
+
+
+
+
+
+POSTGRESQL 
+
+sudo apt install postgresql postgresql-contrib
+ 
+sudo -i -u postgres  		// entra en la cuenta de postgres
+
+>>>  psql					// en tra en el postgres prompt
+
+sudo -u postgres psql		// entra directo al prompt
+
+\q					///salir
+
+
+sudo -u postgres createuser --interactive		/////create una new user
+crear name:::::
+??superuser????
+
+sudo -u postgres createdb <nombre de la ddbbb>
+sudo -u postgres psql     //// al prompt
+>>> \conninfo   //// salir
+
+sudo -u <user> psql ///// entra en el prompt del user
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------
+
+
+
 sudo apt-get install gnupg
 
 wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -

@@ -1,7 +1,5 @@
 WSX2022z.
 
-
-sudo apt install postgresql postgresql-contrib
 sudo apt install postgresql postgresql-contrib
  
 sudo -i -u postgres  		// entra en la cuenta de postgres
@@ -12,6 +10,11 @@ sudo -u postgres psql		// entra directo al prompt
 
 \q					///salir
 
+
+
+
+postgres=# \c titan
+titan=# \dt
 
 sudo -u postgres createuser --interactive		/////create una new user
 crear name:::::
@@ -37,7 +40,7 @@ sudo -u posrgresql psql
 \i /users/person.sql
 \x expanded display on
 
-alter user postgres with password 'gigio';
+alter user postgres with password 'gigio'
 
 sudo apt install pgadmin4
 
@@ -207,9 +210,43 @@ insert INTO person (person_uid) values (uuid_generate_v4());
 select * from person left join car USING (car_uid); /// when columns are equals.  ?foreing and primary key?
 
 
+____++_++++__________________________
+
+ON DELETE
+
+foreign key(car_uid) references person(car_uid) on delete set null;
+
+
+++_+_+_+_+_+_+_+_+_+_+_+_
+
+TRIGGERS
+
+delimiter $$
+ create 
+   trigger my_trigger before insert
+   on employee
+     for each row begin 
+   		insert into table_name values('added new empoyee');   /insert into table_name values(NEW.first_name);
+     end$$
+
+delimiter;
 
 
 
+delimiter $$
+ create 
+   trigger my_trigger1 before insert
+   on employee
+     for each row begin 
+		if NEW.sex = 'M' then 
+		    insert into my_table values ('addeed MALE employee');
+		elseif NEW.sex = 'F' then 
+   		    insert into my_table values ('addeed FEMALE employee');
+   		else 
+  		    insert into my_table values ('addeed OTHER employee');
+  		end if
+     end$$
+delimiter;
 
 
 
