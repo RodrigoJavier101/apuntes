@@ -1,8 +1,52 @@
 npm install npm@latest -g
+sudo npm cache clean -f
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
 
 
-en .bashrc
 
+
+
+
+
+en ~/.bashrc
+o en ~/.zshrc
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+
+
+
+
+
+
+_____importante
+source ~/.nvm/nvm.sh
+
+
+
+
+nvm install node 
+nvm ls 
+
+
+With this command, you can find the available node.js version for the installation.
+nvm ls-remote 
+
+
+nvm run default --version 
+
+
+nvm exec 12.18.3 server.js
+
+
+
+ sudo npm install -g n
+ 
+ 
+ 
+ sudo apt install -y curl
+ 
+ 
+ 
+ curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+ sudo apt install -y nodejs
