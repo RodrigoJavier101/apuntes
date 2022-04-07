@@ -2,9 +2,8 @@ WSX2022z.
 
 sudo apt install postgresql postgresql-contrib
  
-sudo -i -u postgres  		// entra en la cuenta de postgres
-
->>>  psql					// en tra en el postgres prompt
+>>>sudo -i -u postgres  		// entra en la cuenta de postgres
+>>>psql					// en tra en el postgres prompt
 
 sudo -u postgres psql		// entra directo al prompt
 

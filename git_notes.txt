@@ -1,4 +1,5 @@
 git clone --branch <branchname> <remote-repo-url>
 
-
+//// si se me olvida crear de inmediato .gitignore
+git rm -r --cached node_modules
 
