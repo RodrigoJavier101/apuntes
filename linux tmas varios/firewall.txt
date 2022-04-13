@@ -1,0 +1,40 @@
+sudo apt-get install ufw
+
+sudo ufw enable
+
+sudo ufw status
+
+reglas de firewall
+
+sudo ufw allow [port/protocol]
+sudo ufw allow 56/tcp
+
+sudo ufw deny 56/tcp
+
+sudo ufw allow/deny [Starting_port:Ending_port]/protocol
+sudo ufw allow 300:310/tcp
+sudo ufw deny 300:310/tcp
+
+Trabajando con servicios
+HTTP requiere que el puerto 80 esté disponible y para HTTPS el puerto 443 está disponible.
+sudo ufw allow http
+
+Denegar o permitir conexiones de direcciones IP
+sudo ufw deny from IPADRESS
+sudo ufw deny from 192.168.1.2
+sudo ufw allow from 192.168.1.2
+
+especificar si queremos que una dirección IP pueda conectarse solo a un puerto específico.
+sudo ufw allow from 192.168.1.4 to any port 44
+
+
+Eliminar una regla
+sudo ufw status numbered
+sudo ufw delete 4
+
+
+sudo ufw –help
+
+
+
+

@@ -4,7 +4,7 @@ ssh root@ip
 
 sudo apt update  instalar node 
 sudo apt install nodejs
-sudoi apt install npm
+sudo apt install npm
 
 instalar nginx 
 sudo apt install nginx
@@ -14,11 +14,11 @@ verificar el servidor web con la ip del server
 crear un nuevo virtual host 
 cd /etc/nginx/sites-available
 
-sudo vim app.conf
+sudo nvim app.conf
 
 server {
   listen 80;
-  server_name 157.245.246.100;
+  server_name antoinette.cl;
   root /var/www/app/build;
   index index.html;
   
@@ -27,7 +27,7 @@ server {
   location / {
     try_files $uri /index.html =404;
   }
-}
+
 
 
 ++++
@@ -38,12 +38,10 @@ sudo ln -s /etc/nginx/sites-availables/app.conf /etc/nginx/sites-enabled/
 
 ls -al /etc/nginx/sites-enabled/     > muestra el enlace creado
 
-ir a /var/www/   se puede crear una app o clonar
+cd /var/www/   se puede crear una app o clonar
 
 cd ./reactapp 	  hacer un npm run build para que cree la carpeta build
 recargar nginx
 sudo service nginx reload
 
-
-
-
+	

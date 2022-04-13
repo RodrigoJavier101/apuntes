@@ -51,7 +51,7 @@ select coalesce(email, 'email not provided') from person;
 
 
 NULLIF
-si son iguales no elige nada es null,, si son distintos elige el primero
+si son iguales no elige nada es null, si son distintos elige el primero
 select 10 / 0;
 select NULLIF(10, ); ///toma dos argumentos 
 

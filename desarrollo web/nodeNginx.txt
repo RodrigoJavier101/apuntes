@@ -1,0 +1,12 @@
+ssh -i <password> en caso de haber usado antes el server
+
+sudo apt update
+
+instalar NODE y NPM
+
+
+
+
+
+
+

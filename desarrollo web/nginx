@@ -1,0 +1,52 @@
+/etc/nginx/sites-available    
+
+
+, los sitios se diferencian por el virtual host, todo apunta al mismo
+server pero se pueden diferenciar y acceder con el dominio o subdominio
+
+
+primero borrar*** el default server
+root///
+server_name///
+
+
+
+
+
+/etc/nginx/sites-available   dsefault
+
+cp default store.antoinette.cl
+cp default proyecto-duoc.antoinette.cl
+
+ir a sites-enabled
+hacer un link simbolico, que es como un puntero a un archivo que
+esta en otro lado y server creee que el archivo esta aqui
+
+ln -s ../sites-available/proyecto-duoc.antoinette.cl .
+ESTAR EN EL FOLDER SITES - ENABLED
+sudo ln -s /etc/nginx/sites-available/proyecto-duoc.antoinette.cl .
+sudo ln -s /etc/nginx/sites-available/store.antoinette.cl .
+
+
+deben apuntar a la ip del servidor
+
+ver en 
+vim /etc/hosts
+
+
+sudo unlink /etc/nginx/sites-enabled/default 
+sudo unlink /etc/nginx/sites-enabled/proyecto-duoc.antoinette.cl
+sudo unlink /etc/nginx/sites-enabled/store.antoinette.cl
+
+
+recargar nginx
+
+
+sudo service nginx reload
+nginx -s reload
+
+
+
+
+
+

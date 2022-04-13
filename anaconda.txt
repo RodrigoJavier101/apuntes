@@ -1,0 +1,6 @@
+ 	apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+  To use GUI packages with Linux, you will need to install the following extended dependencies for Qt:
+
+  conda install -c conda-forge selenium
+
+  conda install -c conda-forge python-wget

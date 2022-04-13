@@ -9,7 +9,7 @@ se copia la publica
 
 cat <nombre de la llave publica.pub> | pdcopy .  
 
-en digital pcean add public ssh key
+en digital ocean add public ssh key
 
 se copia la ip y se puede acceder al server
 
@@ -22,8 +22,8 @@ sudo apt-gedt update y upgrade
 
 --Deshabilitar la auth por contrasena
 
-cd /etc/ssh/
-sudo vim sshd_config 
+sudo vim /etc/ssh/sshd_config
+  
 la variable passwordAuth debe estar en NO.
 challengeRespAuth en NO.
 usePAM en NO, luego
@@ -32,7 +32,7 @@ systemctl restart sshd
 --deshabilitar el root log y crear una nueva clave/user
 addusercon permisos de sudo 
 >adduser eon
->password, QWE2022*
+>password, QWEqwe2022     ??? me pude haber equivocado
 >fullname (se pueden saltar)
 anadir el user al grupo de sudo 
 usermod -aG sudo <nombre>
@@ -51,7 +51,7 @@ se cambia ahora una config de sshd__config
 cd /etc/ssh/
 sudo vim sshd_config 
 la variable PermitRootLogin NO
-para que el user rootr no pueda acceder al server
+para que el user root no pueda acceder al server
 
 reiniciar el ssh 
 systemctl restart sshd
@@ -76,7 +76,7 @@ cualquiera que se quiera conn
 sudo ufw default allow outgoing
 
 cualquier app en el server pueda conectarse con el exterior
-sudo ufw reload 
+sudo ufw reload
 
 salir de la session e intentar entrar para chek
 ssh user@ip
