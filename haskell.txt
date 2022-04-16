@@ -1,0 +1,15 @@
+apt-get update
+apt-get install haskell-platform -y
+
+
+haskell-compiler --version
+
+
+ghci
+
+	
+compile
+
+ghc -o example example.hs
+
+apt-get remove haskell-platform -y
