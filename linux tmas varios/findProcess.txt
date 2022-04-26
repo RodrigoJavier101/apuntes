@@ -1,0 +1,9 @@
+finds the process running on that port
+sudo lsof -i :4000
+kill -15 PID 
+(replacing PID in that command with the actual PID).
+_++_++++_+_+_
+To find the PID,
+
+lsof -i TCP:4000 | grep LISTEN
+kill -9 4000 

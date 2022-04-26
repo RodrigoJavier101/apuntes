@@ -1,0 +1,8 @@
+Dentro del server
+cp -R includes/ includes_backup/
+
+cp -Rf includes/ admin/includes/
+mv includes/* ./
+++++++++++++++++++++++++
+
+Desde el server hacia local

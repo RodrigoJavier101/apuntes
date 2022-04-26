@@ -13,7 +13,7 @@ server_name///
 
 
 
-/etc/nginx/sites-available   dsefault
+cd /etc/nginx/sites-available   dsefault
 
 cp default store.antoinette.cl
 cp default proyecto-duoc.antoinette.cl
@@ -41,8 +41,10 @@ sudo unlink /etc/nginx/sites-enabled/store.antoinette.cl
 
 recargar nginx
 
+ngnx -t   /// check syntaxis de nginx.conf
 
 sudo service nginx reload
+systemctl reload nginx
 nginx -s reload
 
 

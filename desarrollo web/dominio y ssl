@@ -46,12 +46,35 @@ se anade un read code de type A
 En el name si es subdominio se pone solo, pero si es un dominio se empieza @ ,
 se pega la ip del server. Se guarda, se espera la propagacion del dns.
 
-++++++++++++++++++++++++++++++++++
-sudo snap install core; sudo snap refresh core
 
+
+++++++++++++++++++++++++++++++++++
 Remove certbot-auto and any Certbot OS packages
 sudo apt-get remove certbot
 
+Eliminar certificados
+sudo certbot delete
+
+
+
+sudo service nginx restart
+
+Then test your nginx configuration file(s) (until you see "nginx: configuration file /etc/nginx/nginx.conf test is successful")
+sudo nginx -s reload -t
+
+
++++++++++++++++++++++++++++++++++++++++++
+Quitar certificados
+certbot revoke --cert-path /etc/letsencrypt/archive/${YOUR_DOMAIN}/cert1.pem
+antoinette.cl
+www.antoinette.cl
+proyecto-duoc.antoinette.cl
+www.proyecto-duoc.antoinette.cl
+
+
+
+
+sudo snap install core; sudo snap refresh core
 sudo snap install --classic certbot
 
 Prepare the Certbot command 

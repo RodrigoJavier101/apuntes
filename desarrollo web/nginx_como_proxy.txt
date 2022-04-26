@@ -1,0 +1,45 @@
+backn y proxy pass
+permite balancear la carga entre diferentes servidores.
+
+Crear dos servers mas que sera servers de bcknd 
+lo unico que deben hacer es correr en http
+y que nginx pueda llegar a la ip
+Puede ser interna o en la misma red de la LAN o una IP externa 
+
+Agregar Location (se usa para agregar diferentes conf
+para diferentes rutas de la app) en el site available
+
+en location /app que sera de proxy para los servidores  
+
+location /app{
+	proxy_pass http://104.131.47.83:8080
+}
+
+nginx -t   //// check syntasis 
+nginx -s reload
+
+UPSTREAM
+es un set dse servidores donde se le pueden pasar dif
+para que actue de manera diferente al redireccionar el trafico 
+po defecto manda el trafico 1/1 (balancea el trafico) 
+hay que modificar el file 
+vim /etc/nginx/nginx.conf        /// es diferente al de virtual host 
+porque el bloque de upstream debe ir dentro del bloque http
+en el virtual host esta el bloque server
+
+
+En el bloque se ponen los servers que conforman ese bcknd
+
+upstream backend_myapp{
+server <IP:puerto>
+server <IP:puerto>
+
+
+Volver al virtual host y en vez de hacer un proxy pass
+a http en la ip se cambia http://backend
+
+nginx -t 
+nginx -s reload
+
+se le puede poner un weight=5 por ejemplo
+}

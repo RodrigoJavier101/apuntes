@@ -3,3 +3,77 @@ git clone --branch <branchname> <remote-repo-url>
 //// si se me olvida crear de inmediato .gitignore
 git rm -r --cached node_modules
 
+
+git remote set-url orign <REPO_URL>
+
+
+// para borrar la branch local
+git branch -d localBranchName
+
+// para borrar la branch remota
+git push origin --delete remoteBranchName
+
+______________________________________________________________
+
+apt update -y
+apt install git -y
+  
+install git from source
+apt install libz-dev libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext cmake gcc
+https://github.com/git/git/archive/refs/tags/v2.31.1.tar.gz -O git.tar.gz
+tar -zxf git.tar.gz
+cd git-*
+---make the package and install it by typing these two commands:
+make prefix=/usr/local all
+make prefix=/usr/local install
+----replace the shell process so that the version of Git we just installed will be used:
+exec bash
+
+
+_______
+adduser git
+passwd git
+su – git
+____________________________________
+----Initiate a new empty repository using following command:
+git init –bare ~/hostnextra.git??????
+
+______________________________
+Enable post-update hook by copying the sample file as follows:
+
+    # cd hostnextra.git/hooks/
+    # cp post-update.sample post-update
+
+_____________________________
+git config –global user.name “eon”
+git config –global user.email “rodrigojaviergd@gmail.com”
+
+
+
+
+git config --global core.editor "vim"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

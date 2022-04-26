@@ -90,8 +90,8 @@ descomment:
 net.ipv4.conf.default.rp_filter=1
 net.ipv4.conf.all.rp_filter=1
 
-net.ipv4.conf.all.accespt_redirect=0
-net.ipv6.conf.all.accespt_redirect=0
+net.ipv4.conf.all.accept_redirect=0
+net.ipv6.conf.all.accept_redirect=0
 
 net.ipv4.conf.all.send_redirect=0
 

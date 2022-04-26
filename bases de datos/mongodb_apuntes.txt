@@ -30,9 +30,11 @@ sudo systemctl start mongod.service    ///para iniciar el servicio
 
 sudo systemctl status mongod   /////compruebe el estado del servicio.
 
+ - - - - - - - -
+
 sudo systemctl enable mongod     ////habilite el servicio MongoDB para que se inicie en el arranque
 
-mongo --eval 'db.runCommand({ connectionStatus: 1 })'     ////erificar que la base de datos está operativa 
+mongo --eval 'db.runCommand({ connectionStatus: 1 })'     ////verificar que la base de datos está operativa 
 
 
 Gestionar el servicio de MongoDB
@@ -40,7 +42,6 @@ Gestionar el servicio de MongoDB
 sudo systemctl disable mongod
 
 sudo systemctl enable mongod				/////habilitarlo en el inicio,
-
 
 sudo systemctl status mongod			//////comprueba el estado del servicio
 
@@ -52,8 +53,6 @@ sudo systemctl restart mongod			/////////reiniciar el servidor cuando esté ejec
 
 
 --------------------------------------
-
-
 mongo install 
 
 curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
@@ -95,45 +94,6 @@ sudo systemctl stop mongod				//////detener el servicio
 sudo systemctl start mongod				///////iniciar el servicio cuando esté detenido
 
 sudo systemctl restart mongod			/////////reiniciar el servidor cuando esté ejecutándose
-
-
-
-
-
-
-
-POSTGRESQL 
-
-sudo apt install postgresql postgresql-contrib
- 
-sudo -i -u postgres  		// entra en la cuenta de postgres
-
->>>  psql					// en tra en el postgres prompt
-
-sudo -u postgres psql		// entra directo al prompt
-
-\q					///salir
-
-
-sudo -u postgres createuser --interactive		/////create una new user
-crear name:::::
-??superuser????
-
-sudo -u postgres createdb <nombre de la ddbbb>
-sudo -u postgres psql     //// al prompt
->>> \conninfo   //// salir
-
-sudo -u <user> psql ///// entra en el prompt del user
-
-
-
-
-
-
-
-
-
-
 
 
 ----------------------------------------------------------
