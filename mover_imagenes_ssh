@@ -6,3 +6,23 @@ mv includes/* ./
 ++++++++++++++++++++++++
 
 Desde el server hacia local
+    
+    3 Usando SCP
+SCP es un complemento de SSH que nos permite copiar archivos de forma rápida y segura.
+scp archivo usuario@servidor:ruta
+    
+Para copiar a la inversa, desde el computador remoto al tuyo, simplemente invertí el orden
+scp usuario@servidor:ruta/archivo ruta_local
+
+
+Para copiar carpetas completas, sólo hace falta agregar el parámetro -r:
+scp -r ~/fotos earendil@earendil-desktop:~/miscosas
+Inversa
+scp earendil@earendil-desktop:~/miscosas/fotos ~
+
+
+**la ruta por defecto es tu carpeta de usuario.
+Si querés copiar algo hacia o desde ahí, podés omitir la ruta:
+scp lista.txt earendil-desktop:
+
+
