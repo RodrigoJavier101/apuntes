@@ -125,7 +125,7 @@ se pueden declarar nombres de servidores
 Host rpi
 Hostname 192.168.0.9
         User kbs
-        LocalForward 1631 127.0.0.1:631
+        LocalForward 1631 127.0.0.1:631   //permite redireccionamineto de puertos
 
 Entrar seria
 ssh rpi 

@@ -26,6 +26,7 @@ ln -s ../sites-available/proyecto-duoc.antoinette.cl .
 ESTAR EN EL FOLDER SITES - ENABLED
 sudo ln -s /etc/nginx/sites-available/proyecto-duoc.antoinette.cl .
 sudo ln -s /etc/nginx/sites-available/store.antoinette.cl .
+sudo ln -s /etc/nginx/sites-available/blog.antoinette.cl .
 
 
 deben apuntar a la ip del servidor
