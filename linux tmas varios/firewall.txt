@@ -33,6 +33,26 @@ sudo ufw status numbered
 sudo ufw delete 4
 
 
+
++++++++++++++++++++++++++++++++++++++++++++
+ABRIR PUERTO 
+sudo ufw allow 22
+un rango
+sudo ufw allow 8000:8080/tcp
+
+CERRAR EL PUERTO
+sudo ufw delete allow 22
+
+un rango
+sudo ufw delete allow 8000:8080/tcp
+
+
+
+
+
+
+
+
 sudo ufw –help
 
 

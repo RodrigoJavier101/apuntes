@@ -5,7 +5,7 @@ sudo apt install postgresql postgresql-contrib
 >>>sudo -i -u postgres  		// entra en la cuenta de postgres
 >>>psql					// en tra en el postgres prompt
 
-sudo -u postgres psql		// entra directo al prompt
+sudo -u postgres psql 		// entra directo al prompt
 
 \q					///salir
 
@@ -31,7 +31,7 @@ create database <nombre de la ddbb>;
 
 
 
-sudo -u posrgresql psql
+sudo -u postgres psql
 \l
 \q
 \d  ///busca relaciones
@@ -40,6 +40,18 @@ sudo -u posrgresql psql
 \x expanded display on
 
 alter user postgres with password 'gigio'
+
+
+create table users (
+  id serial not null,
+  name text,
+  username text, 
+  password text,
+  user_type int,
+  refresh_token text
+);
+
+
 
 sudo apt install pgadmin4
 
