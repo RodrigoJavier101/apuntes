@@ -64,7 +64,7 @@ es import porque cuando se entra en el server se usa ssh y el firewall lo debe p
 sudo ufw allow 80/tcp   >es hhtp
 sudo ufw allow 443/tcp  >es https
 
-luego habilitar el 
+luego habilitar el firewall
 sudo ufw enable
 yes
 sudo ufw status  >permite ver las reglas activas.

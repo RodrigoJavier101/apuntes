@@ -39,7 +39,7 @@ sudo -u postgres psql
 \i /users/person.sql
 \x expanded display on
 
-alter user postgres with password 'gigio'
+alter user postgres with password 'gigio';
 
 
 create table users (
@@ -51,7 +51,10 @@ create table users (
   refresh_token text
 );
 
+insert into users (name,  username,   password,  user_type,  refresh_token)
+values ('Adminstrator', 'admin', '123', 5001, '123');
 
+select * from users;
 
 sudo apt install pgadmin4
 

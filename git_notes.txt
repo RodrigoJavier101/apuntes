@@ -53,27 +53,6 @@ git config –global user.email “rodrigojaviergd@gmail.com”
 
 git config --global core.editor "vim"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---------------
+quitar todo del stage
+git reset HEAD -- .

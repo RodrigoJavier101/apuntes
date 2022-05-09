@@ -90,8 +90,9 @@ certbot renew --dry-run
 cd /etc/cron.d/certbot   //// ver si existe el cronjob
 
 
+sudo certbot delete   /// para quitar el ssl
 
-
+sudo certbot delete --cert-name example.com
 
 sudo apt autoremove
 
