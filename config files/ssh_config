@@ -1,0 +1,11 @@
+ ##Rodrigo Javier
+                                                                                                               
+    
+   StrictHostKeyChecking no
+   XAuthLocation /opt/X11/bin/xauth
+   ForwardAgent Yes
+     
+   Host anto
+     Hostname  164.92.74.82
+     User root
+                 
