@@ -95,7 +95,7 @@ firefox  , lo ejecuta en el server pero se ve en mi maquina
 
 ____
 Si un server esta detras de un fireWALL  LOCALFORWARD 
-de dos server donde en uno si se puee entrar
+de dos server donde en uno si se puede entrar
 ssh -L 2020:<ip>:22 user@ip
 Crea el puerto 2020 en mi maquina que apunta al puerto 22 del servidor 2 (bloqueado)
 a atraves del servidor 1
@@ -113,9 +113,8 @@ finalmente:
 ssh root@localhost -p2020
 accedo a mi server2MIO y por medio de el accedo a server bloqueado
 
-
-
 +++++++++++++++++++++++++++++++++++++
+3/././
 Comandos mas avanzados
 file de config, por eje 
 
