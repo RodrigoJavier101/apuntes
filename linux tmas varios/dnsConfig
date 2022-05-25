@@ -1,0 +1,141 @@
+sudo apt install bind9 bind9utils bind9-doc
+
+verificar la IP
+ifconfig
+
+
+ir a bind folder y copiar files para respaldo
+cd /etc/bind
+
+sudo vim named.conf.local
+
+//Zona interna
+zone "antoinette.cl" {
+ type master;
+ file "/etc/bind/db.local";
+};
+
+//Zona inversa
+zone "1.168.192.in-addr.arpa"{
+ type master;
+ file "/etc/bind/db.192";
+}
+
+
+Check la config
+sudo named-checkconf
+
+Cambia el nombre de db.127
+sudo cp db.127 db.192
+
+*** en el SOA se cambia en el localhost por el dominio (al final igual)
+***
+@       IN      SOA     antoinette.cl. root.antoinette.cl. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      antoinette.cl.
+106   IN      PTR     antoinette.cl.
+
+***
+EL 106 es el ultimo numero de la ip.
+
+sudo named-checkzone 1.168.192.in-addr.arpa /etc/bind/db.192
+
+***
+cambio del nombre del file db.local
+
+sudo cp db.local db.antoinette.cl
+
+sudo vim db.antoinette.cl
+***
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     antoinette.cl. root.antoinette.cl. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      antoinette.cl.
+@       IN      A       192.168.1.106
+dns     IN      A       192.168.1.106
+www     IN      A       192.168.1.106
+***
+
+
+sudo named-checkzone antoinette.cl /etc/bind/db.antoinette.cl
+***
+sudo vim named.conf.options 
+//descomentar FORWARDER y se le pone la ip 192.168.1.106
+
+agregar
+listen-on port 53 { 192.168.1.106; };    /// despues de la validacion de dns 
+***
+verificar la conexion
+nmcli device show | grep IP4.DNS   /// si no muestra nada esta OK!!!
+
+***
+verificar errores
+sudo named-checkconf
+
+***
+devolverse  a /etc/
+cd /etc/
+sudo vim resolv.conf   // se configura el nombre de dominio
+***
+QUITAR
+nameserver 127.0.0.53
+options edns0 trust-ad
+search .
+
+
+PONER
+domain antoinette.cl
+search antoinette.cl
+nameserver 192.168.1.106
+options edns0
+***
+entrar en hosts
+sudo vim /etc/hosts
+
+se cambia la ip
+****
+viene levantar el servicio y la comprobacion de este en el cliente
+Reiniciar bind9
+sudo service bind9 restart
+sudo service bind9 status      //active
+***
+comprobar el servicio 
+nslookup
+>antoinette.cl
+
+***
+tambien se puede hacer un ping al dominio
+ping antoinette.cl
+
+
+***
+configurar el cliente para conectarse al server
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
