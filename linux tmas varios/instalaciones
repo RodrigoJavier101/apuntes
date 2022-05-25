@@ -1,0 +1,17 @@
+X server
+sudo apt-get install ubuntu-desktop
+
+
+
+sudo apt-get install lxde
+
+
+
+_____
+# Java run time environment
+sudo apt-get install openjdk-7-jre 
+
+# and webkit gtk library
+sudo apt-get install libwebkitgtk-1.0-0
+
+
