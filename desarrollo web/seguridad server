@@ -48,8 +48,7 @@ copia la clave publica
 cat <npmbre de la clave pub> | pbcopy .
 exit en root
 se cambia ahora una config de sshd__config
-cd /etc/ssh/
-sudo vim sshd_config 
+sudo vim /etc/ssh/sshd_config 
 la variable PermitRootLogin NO
 para que el user root no pueda acceder al server
 
@@ -63,6 +62,7 @@ sudo ufw allow OpenSSH
 es import porque cuando se entra en el server se usa ssh y el firewall lo debe permitir.
 sudo ufw allow 80/tcp   >es hhtp
 sudo ufw allow 443/tcp  >es https
+
 
 luego habilitar el firewall
 sudo ufw enable
