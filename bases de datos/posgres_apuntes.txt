@@ -10,7 +10,13 @@ sudo -u postgres psql 		// entra directo al prompt
 \q					///salir
 
 
+select * from information_schema.tables;
 
+select * from information_schema.tables
+    where table_schema not in ('information_schema', 'pg_catalog');
+
+SELECT table_name FROM information_schema.tables WHERE table_schema='public';
+\dt information_schema
 
 postgres=# \c titan
 titan=# \dt
