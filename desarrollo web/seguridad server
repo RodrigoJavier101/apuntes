@@ -18,7 +18,7 @@ ssh root@18181.28323. ip  (password)
 
 el prompt debe cambiar senala el nombre de la maquina 
 
-sudo apt-gedt update y upgrade
+sudo apt update && sudo apt upgrade -y
 
 --Deshabilitar la auth por contrasena
 
@@ -62,7 +62,9 @@ sudo ufw allow OpenSSH
 es import porque cuando se entra en el server se usa ssh y el firewall lo debe permitir.
 sudo ufw allow 80/tcp   >es hhtp
 sudo ufw allow 443/tcp  >es https
-
+sudo ufw allow 6001/tcp
+sudo ufw allow 6002/tcp
+sudo ufw allow 6003/tcp
 
 luego habilitar el firewall
 sudo ufw enable
