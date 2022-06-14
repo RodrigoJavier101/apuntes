@@ -1,0 +1,20 @@
+sudo apt update
+
+$ sudo apt install default-jdk
+
+or
+
+$ sudo apt install openjdk-11-jdk
+
+
+$ sudo apt install openjdk-8-jdk
+
+$ sudo update-alternatives --config java
+
+
+$ sudo apt install default-jre
+
+Or
+
+$ sudo apt install openjdk-11-jre
+
