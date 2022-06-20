@@ -1,0 +1,195 @@
+Objetivo:
+
+Paul Pratt director de aerolíneas FastWing esta muy conforme con el diseño del algoritmo que le has presentado es por eso que necesita cuanto antes que comiences con el desarrollo de la aplicación.
+
+Para eso debes tener en cuenta lo siguiente:
+
+Basándonos en el algoritmo y el diagrama de flujos que realizamos en la tarea n°1, es hora de poner manos a la obra en el código Java como tal aplicando todos los conceptos de programación orientada a objetos.
+
+La Programación Orientada a Objetos. Es un paradigma de la programación que Busca orientar la programación a objetos del mundo real. Simularlos y crearlos para poder trabajar con ellos y sus relaciones.
+
+
+2. Creación de nuestra Clase
+
+Lo primero que debemos hacer para desarrollar nuestra aplicacion seria definir nuestra clase con sus atributos.
+
+En este caso nuestra clase se va a llamar "Vuelo" y va tener los siguientes atributos:
+
+    Numero de Id del tipo Long
+
+    Una clave alfanumérica con el numeroDeVuelo de tipo String
+
+    Un destino que va a ser de tipo String
+
+    Un indicador de escalas de tipo Boolean (true si tiene ,false si no tiene)
+
+    Disponibilidad de asientos que debe de ser un numero del tipo Integer
+
+    Una fecha del tipo LocalDateTime
+    
+    
+3. Generar un Constructor
+
+
+Lo primero que debemos hacer luego de crear nuestra clase Vuelo es generarle un constructor indicándole con que parámetros va a necesitar para instanciar nuestro objeto en este caso Vuelo.
+
+Para la creación de un constructor nos podemos basar en el siguiente ejemplo de una clase Player:
+
+public class Player{
+  private String username;
+  private String password;
+  
+  public Player(){}
+  
+  public Player(String userName, String passWord){
+     this.username = userName;
+     this.password = passWord;
+  }
+}
+
+4. Getters y Setters
+
+
+Luego de crear nuestra clase con sus atributos vamos a generar los Getters y Setters.
+
+Los Getters and Setters ("get" y "set") son nuestra forma de acceder a las propiedades encapsuladas* de una clase. Llamamos propiedades encapsuladas a aquellas que tienen la palabra clave "private" por delante, es decir que solo se puede acceder a ellas estando en el contexto de la clase en la que estemos, a no ser que utilicemos los getters y setters para permitirnos acceder desde cualquier lugar en nuestra app,
+
+    Con los Getters vamos a acceder a los datos de nuestra clase.
+
+    Con los Setters podemos actualizarlos o modificarlos.
+
+Una vez realizadas la clase vuelo con su constructor Getters y Setters realizar la entrega del zip del proyecto 
+
+
+5. Instanciación de objetos
+
+
+Debe instanciar los objetos Vuelo en el aplication context o metodo main, que es donde vamos a instanciar nuestros objetos de prueba y a plasmar la logica.
+
+Para eso podemos basarnos en el siguiente ejemplo de objetos Player:
+
+Player player1 = new Player("j.bauer@ctv.edu", "123");
+
+
+6. Definir Clase pasajero
+
+
+Como ya lo hicimos con la Clase "Vuelo" debemos generar la Clase "Pasajero" con los siguientes atributos:
+
+    Debe tener un Id de tipo Long
+
+    Un nombre de tipo String
+
+    Un apellido de tipo String
+
+    Un DNI de tipo Integer
+
+    Un Boolean de si esta hisopado 
+
+    Y un vuelo de tipo Vuelo
+
+
+
+7. Relación de Entidades
+
+
+En el caso que una clase este conformada en parte por otra clase se puede relacionar con la finalidad de integrarlas ya sea individualmente o en una lista de la misma (usaremos de ejemplo las clases "Game" y "Player", en donde un juego(game) tiene muchos jugadores(player), es decir si a nuestra clase "Game" le definimos una propiedad "List<Player>" esto establecería y nos indicaría su relacion.
+
+
+public class Game{
+  private long id_;
+  private LocalDateTime fechaDeCreacion;
+  private List<Player> player;
+  
+  public Game(){}
+  
+  public Game(long id, LocalDateTime fechaDeCreacion, List<Player> player){
+    id_ = id;
+    this.fechaDeCreacion = fechaDecreacinoon;
+    this.player = player;
+  }
+  
+  public long getId(){
+    return id_  ;
+  }
+  
+  public void setId(){
+    id_ = id;
+  }
+  
+  public LocalDateTime getFechaDecreacion(){
+    return fechaDeCreacion;
+  }
+  
+  public void setFechaDeCreacion(LocalDateTime fechaDeCreacion){
+    this.fechaDeCreacion = fechaDecreacion;
+  }
+  
+  public List<Player> getPlayer(){
+    return player;
+  }
+  
+  public void setPlayer(Liist<Player> player){
+    this.player;
+  }
+}
+
+8. Generar clase ticket
+
+
+Así como hicimos nuestras clases "Vuelo" y "Pasajero" ahora debemos generar nuestra clase "Ticket" que es la que va a establecer la relación de muchos a muchos entre Vuelo y Pasajeros.
+
+La clase Ticket va a tener los siguientes atributos:
+
+    Id
+
+    Numero de ticket
+
+    Puerta de embarque
+
+    Fecha de emisión
+
+    Pasajero
+
+    Vuelo
+
+    Valor del ticket
+
+Realizar la entrega del zip del proyecto con las clases Ticket , Pasajeros y Vuelos  con sus atributos y relaciones 
+
+
+
+9. Implementación de Lógica
+
+
+Ahora que ya tenemos nuestras clases relacionadas es hora de aprovecharlas para seguir desarrollando el sistema que Paul Pratt necesita para organizar el sistema de vuelos de su aerolineas FastWing .
+
+Como ya hemos aprendido deberemos generar nuestros datos de prueba en el metodo main:
+
+    Crear 4 objetos Vuelo con sus atributos
+
+    Crear 8 objetos Pasajero con sus atributos
+
+    Crear 8 objetos Ticket con sus atributos
+
+
+Debe generar un sistema donde, según la opción seleccionada se realicen las siguientes operaciones:
+
+
+    Mostrar una lista de pasajeros.
+    Mostrar una lista de tickets.
+    Mostrar una lista de vuelos.
+    Configurar un Scanner y obtener vuelos por id
+    Mostrar por consola a todos los pasajeros que pertenezcan a un vuelo.
+    Generar un método para modificar el nombre de un pasajero.
+    Generar un método para modificar el destino de un vuelo.
+    Mostrar por consola los ticket que pertenezcan a un pasajero.
+
+Una vez realzadas las tareas, debe entregar el zip
+
+
+
+
+
+
+
