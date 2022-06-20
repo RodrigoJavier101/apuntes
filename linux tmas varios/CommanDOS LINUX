@@ -1,0 +1,16 @@
+¿Cuánto espacio de disco he utilizado?
+
+df -h
+
+Puedes utilizar el comando lsblk para ver todos los discos y particiones de tu sistema.
+
+Una vez que tengas el nombre de la partición del disco, puede montarla de esta manera:
+
+sudo mount /dev/sdb2 /mnt
+
+ espacio libre en disco de forma gráfica 
+ 
+ sudo apt install baobab
+ 
+ 
+ 
