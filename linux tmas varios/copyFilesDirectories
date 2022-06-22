@@ -1,0 +1,8 @@
+scp /archivo/local usuario_ssh@servidor:/archivo/remoto
+
+scp -P 2222 /archivo/local usuario_ssh@servidor:/archivo/remoto
+
+scp usuario_ssh@servidor:/archivo/remoto /archivo/local
+
+scp -r usuario_ssh@servidor:/dir/remoto /dir/local
+
