@@ -1,50 +1,19 @@
-Basándonos en el algoritmo y el diagrama de flujos que realizamos en la tarea n°1, es hora de poner 
-manos a la obra en el código Java como tal aplicando todos los conceptos de programación orientada 
-a objetos.
-
+Basándonos en el algoritmo y el diagrama de flujos que realizamos en la tarea n°1, 
 
 2. Creación de nuestra Clase
 
 Definir nuestra clase con sus atributos. Se va a llamar "Vuelo" y va tener los siguientes atributos:
 
-    Numero de Id del tipo Long
-
-    Una clave (password) alfanumérica con el numeroDeVuelo de tipo String
-
-    Un destino que va a ser de tipo String
-
-    Un indicador de escalas (por destino) de tipo Boolean (true si tiene ,false si no tiene)
-
+    Id del tipo Long
+    (password) alfanumérica con el numeroDeVuelo de tipo String
+    destino tipo String
+    indicador de escalas (por destino) de tipo Boolean (true si tiene ,false si no tiene)
     disponibilidad de asientos que debe de ser un numero del tipo Integer
-
     Una fecha del tipo LocalDateTime
-    
-    
+     
 3. Constructor
 
-indicándole con que parámetros se va para instanciar Vuelo.
-
-Ejemplo de una clase Player:
-
-public class Player{
-  private String username;
-  private String password;
-  
-  public Player(){}
-  
-  public Player(String userName, String passWord){
-     this.username = userName;
-     this.password = passWord;
-  }
-}
-
 4. Getters y Setters
-
-son la forma de acceder a las propiedades encapsuladas* de una clase. 
-Llamamos propiedades encapsuladas a aquellas que tienen la palabra clave "private" por delante, es decir que solo se puede acceder a ellas estando en el contexto de la clase en la que estemos, a no ser que utilicemos los getters y setters para permitirnos acceder desde cualquier lugar en nuestra app,
-
-    Con los Getters vamos a acceder
-    Con los Setters, actualizarlos o modificarlos.
 
 ***********realizar la entrega del zip del proyecto**********
 
@@ -52,66 +21,22 @@ Llamamos propiedades encapsuladas a aquellas que tienen la palabra clave "privat
 
 Debe instanciar objetos Vuelo en el metodo main.
 
-Ejemplo de objetos Player:
-
-Player player1 = new Player("j.bauer@ctv.edu", "123");
-
-
 6. Definir Clase pasajero
 
 Generar la Clase "Pasajero" con los siguientes atributos:
 
-    Debe tener un Id de tipo Long
-    Un nombre de tipo String
-    Un apellido de tipo String
-    Un DNI de tipo Integer
-    Un Boolean de si esta hisopado 
+    Id de tipo Long
+    Unombre String
+    apellido String
+    DNI Integer
+    Boolean si esta hisopado 
     Y un vuelo de tipo Vuelo
 
 7. Relación de Entidades
 
 Clase este conformada en parte por otra clase.
 individualmente o en una lista. 
-
-
-public class Game{
-  private long id_;
-  private LocalDateTime fechaDeCreacion;
-  private List<Player> player;
   
-  public Game(){}
-  
-  public Game(long id, LocalDateTime fechaDeCreacion, List<Player> player){
-    id_ = id;
-    this.fechaDeCreacion = fechaDecreacinoon;
-    this.player = player;
-  }
-  
-  public long getId(){
-    return id_  ;
-  }
-  
-  public void setId(){
-    id_ = id;
-  }
-  
-  public LocalDateTime getFechaDecreacion(){
-    return fechaDeCreacion;
-  }
-  
-  public void setFechaDeCreacion(LocalDateTime fechaDeCreacion){
-    this.fechaDeCreacion = fechaDecreacion;
-  }
-  
-  public List<Player> getPlayer(){
-    return player;
-  }
-  
-  public void setPlayer(Liist<Player> player){
-    this.player;
-  }
-}
-
 8. Generar clase ticket
 
 Generar nuestra clase "Ticket"
@@ -148,4 +73,4 @@ Debe generar un sistema donde, según la opción seleccionada se realicen las si
     Generar un método para modificar el destino de un vuelo.
     Mostrar por consola los ticket que pertenezcan a un pasajero.
 
-Una vez realzadaUSBLTRADINGs las tareas, debe entregar el zip
+************debe entregar el zip****************
