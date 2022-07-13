@@ -1,0 +1,11 @@
+Windows +R
+diskmgmt.msc
+
+
+++++++++++++++++++++
+diskpart
+list disk
+select disk 1
+Clean           ///  Vas a eliminar toda la información y reestructurar la raiz del disco al que realices este comando.
+o
+format fs=ntfs label=32 quick
