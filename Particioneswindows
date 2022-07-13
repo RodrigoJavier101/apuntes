@@ -9,3 +9,13 @@ select disk 1
 Clean           ///  Vas a eliminar toda la información y reestructurar la raiz del disco al que realices este comando.
 o
 format fs=ntfs label=32 quick
+
+
+
+
++++++++++++++++++++++++++++
+
+chkdsk e: /f /r /x     //  “e” que se refiere a la unidad de la partición
+
+
+
