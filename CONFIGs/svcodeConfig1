@@ -1,0 +1,99 @@
+{
+	"simple function": {
+		"prefix": "fun_simple",
+		"body": [
+			"funcion(){",
+			"    $1",
+			"}"
+		],
+		"description": "función simple"
+	},
+	"function arrow simple": {
+		"prefix": "fun_arrow",
+		"body": [
+			"() => {",
+			"    $1",
+			"}"
+		],
+		"description": "función simple"
+	},
+	"if simple": {
+		"prefix": "if___",
+		"body": [
+			"if (${1:true}) {",
+			"    $2",
+			"}"
+		],
+		"description": "if simple"
+	},
+	"if else": {
+		"prefix": "if___else",
+		"body": [
+			"if (${1:true}) {",
+			"    $2",
+			"} else {",
+			"    $3",
+			"}"
+		],
+		"description": "if else"
+	},
+	"if else if": {
+		"prefix": "if___else__if",
+		"body": [
+			"if (${1:true}) {",
+			"    $2",
+			"} else if (${3:true}) {",
+			"    $4",
+			"}"
+		],
+		"description": "if else"
+	},
+	"lamda simple": {
+		"prefix": "lam",
+		"body": [
+			"($1)=>{",
+			"  $2",
+			"}"
+		],
+		"description": "lamda simple"
+	},
+	"lamda req res": {
+		"prefix": "lam_",
+		"body": [
+			"(req, res)=>{",
+			"  $1",
+			"}"
+		],
+		"description": "lamda simple"
+	},
+	"lamda line": {
+		"prefix": "lam__",
+		"body": [
+			"($1)=> $2"
+		],
+		"description": "lamda line"
+	},
+	"lamda function": {
+		"prefix": "lam___",
+		"body": [
+			"function()=>{",
+			"  $1",
+			"} "
+		],
+		"description": "lamda function"
+	},
+	"console log": {
+		"prefix": "cl",
+		"body": [
+			"console.log($1);"
+		],
+		"description": "console log"
+	},
+	"console log 2": {
+		"prefix": "cl",
+		"body": [
+			"console.log($1)"
+		],
+		"description": "console log"
+	}
+}

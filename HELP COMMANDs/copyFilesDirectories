@@ -1,3 +1,5 @@
+
+
 scp /archivo/local usuario_ssh@servidor:/archivo/remoto
 
 scp -P 2222 /archivo/local usuario_ssh@servidor:/archivo/remoto

@@ -1,4 +1,76 @@
+ADD pg admin repository
+###curl  -fsSL https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/pgadmin.gpg
 
+
+#####sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list'
+
+Install the public key for the repository (if not done previously):
+
+curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
+
+Create the repository configuration file:
+
+sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+
+
+
+Here's how I solved the issue;
+
+The issue arises because the repository for pgadmin has not been added to your local machine. To solve the issue, do the following below;
+
+Note: This should work in Ubuntu 16.04 (Xenial), Ubuntu 18.04 (Bionic), Ubuntu 19.10 (Eoan), Ubuntu 20.04 (Focal), Debian 9 (Stretch) and Debian 10 (Buster)
+
+Install the public key for the repository (if not done previously):
+
+curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
+
+Create the repository configuration file:
+
+sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+
+Choose the Installation method that you want:
+
+    Install pgAdmin (for both desktop and web modes):
+
+    sudo apt install pgadmin4
+
+    Install pgAdmin (for desktop mode only):
+
+    sudo apt install pgadmin4-desktop
+
+    Install pgAdmin (for web mode only):
+
+    sudo apt install pgadmin4-web 
+
+You can configure the webserver, if you installed pgadmin for web mode:
+
+sudo /usr/pgadmin4/bin/setup-web.sh
+
+Apache service should have been started after installation.
+
+systemctl status apache2
+
+Step 3: Configure Apache Web Server for pgAdmin4
+
+sudo /usr/pgadmin4/bin/setup-web.sh
+
+sudo ufw allow http
+sudo ufw allow https
+
+sellers_mercadolibre
+
+137.184.179.154
+systemctl restart postgresql.service
+^ZxYGA3wgHqI.
+ssl on
+
+pg_hba.conf
+181.212.18.49/26 ip de la pega
+181.73.165.253/26  ip de la casa
+____________________
+
+
+___________________
 service postgresql status
 
 psql some_username -h 127.0.0.1 -d some_database

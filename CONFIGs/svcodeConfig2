@@ -1,0 +1,60 @@
+settigns json
+
+
+{
+  "liveServer.settings.donotShowInfoMsg": true,
+  "files.autoSave": "afterDelay",
+  "editor.formatOnSave": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "liveSassCompile.settings.autoprefix": [
+    {}
+  ],
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "compressed",
+      "extensionName": ".min.css",
+      "savePath": "/dist/css"
+    }
+  ],
+  "liveSassCompile.settings.generateMap": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.fontSize": 15,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "diffEditor.wordWrap": "on",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "terminal.integrated.fontSize": 20,
+  "explorer.sortOrder": "type",
+  "explorer.openEditors.visible": 12,
+  "liveServer.settings.donotVerifyTags": true,
+  "cssPeek.trace.server": "verbose",
+  "editor.wordWrap": "on",
+  "indentRainbow.indentSetter": {},
+  "workbench.colorTheme": "Abyss",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "python.languageServer": "Pylance",
+  "kite.showWelcomeNotificationOnStartup": false,
+  "materialTheme.accent": "Lime",
+  "editor.linkedEditing": true,
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "normal",
+  "editor.minimap.maxColumn": 100,
+  "editor.fontFamily": "'Courier New'",
+  "window.menuBarVisibility": "toggle",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.activityBar.visible": false,
+  "[css]": {
+    "editor.defaultFormatter": "aeschli.vscode-css-formatter"
+  },
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+}
